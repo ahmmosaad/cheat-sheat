@@ -1,0 +1,29 @@
+SQFlite Advance Query Statment
+
+
+#CONTAINS
+put query word between %query word%
+await database.query('Notes',
+        columns: ['title', 'note', 'time', 'id'],
+        where: "title LIKE ?",
+        whereArgs: ['%$title%']);
+
+#Starts with
+using % after query word
+await database.query('Notes',
+        columns: ['title', 'note', 'time', 'id'],
+        where: "title LIKE ?",
+        whereArgs: ['$title%']);
+#Ends with 
+using % before query word
+await database.query('Notes',
+        columns: ['title', 'note', 'time', 'id'],
+        where: "title LIKE ?",
+        whereArgs: ['%$title']);
+
+#Matching any single character in a string 
+using underscore
+await database.query('Notes',
+        columns: ['title', 'note', 'time', 'id'],
+        where: "title LIKE ?",
+        whereArgs: ['t_____']);
